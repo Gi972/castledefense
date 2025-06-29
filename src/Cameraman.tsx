@@ -152,61 +152,69 @@ export default function CameraMan() {
   const controlsRef = useRef<OrbitControlsType | null>(null);
   useOrbitCameraLevaTwoWay({ cameraRef, controlsRef });
 
-  // useFrame(() => {
-  //   const controls = controlsRef.current
-  //   if (!controls) return
+  useFrame(() => {
+    const controls = controlsRef.current;
+    if (!controls) return;
 
-  //   const polar = controls.getPolarAngle()
-  //   const minPolar = SOFT_LIMITS.minPolar
-  //   const maxPolar = SOFT_LIMITS.maxPolar
-  //   if (polar < minPolar) {
-  //     controls.setPolarAngle(THREE.MathUtils.lerp(polar, minPolar, SOFT_LIMITS.rubberBand))
-  //   } else if (polar > maxPolar) {
-  //     controls.setPolarAngle(THREE.MathUtils.lerp(polar, maxPolar, SOFT_LIMITS.rubberBand))
-  //   }
+    const polar = controls.getPolarAngle();
+    const minPolar = SOFT_LIMITS.minPolar;
+    const maxPolar = SOFT_LIMITS.maxPolar;
+    if (polar < minPolar) {
+      controls.setPolarAngle(
+        THREE.MathUtils.lerp(polar, minPolar, SOFT_LIMITS.rubberBand)
+      );
+    } else if (polar > maxPolar) {
+      controls.setPolarAngle(
+        THREE.MathUtils.lerp(polar, maxPolar, SOFT_LIMITS.rubberBand)
+      );
+    }
 
-  //   const azimuth = controls.getAzimuthalAngle()
-  //   const minAzimuth = SOFT_LIMITS.minAzimuth
-  //   const maxAzimuth = SOFT_LIMITS.maxAzimuth
-  //   if (azimuth < minAzimuth) {
-  //     controls.setAzimuthalAngle(THREE.MathUtils.lerp(azimuth, minAzimuth, SOFT_LIMITS.rubberBand))
-  //   } else if (azimuth > maxAzimuth) {
-  //     controls.setAzimuthalAngle(THREE.MathUtils.lerp(azimuth, maxAzimuth, SOFT_LIMITS.rubberBand))
-  //   }
+    const azimuth = controls.getAzimuthalAngle();
+    const minAzimuth = SOFT_LIMITS.minAzimuth;
+    const maxAzimuth = SOFT_LIMITS.maxAzimuth;
+    if (azimuth < minAzimuth) {
+      controls.setAzimuthalAngle(
+        THREE.MathUtils.lerp(azimuth, minAzimuth, SOFT_LIMITS.rubberBand)
+      );
+    } else if (azimuth > maxAzimuth) {
+      controls.setAzimuthalAngle(
+        THREE.MathUtils.lerp(azimuth, maxAzimuth, SOFT_LIMITS.rubberBand)
+      );
+    }
 
-  //   const distance = controls.object.position.distanceTo(controls.target)
-  //   const minDistance = SOFT_LIMITS.minDistance
-  //   const maxDistance = SOFT_LIMITS.maxDistance
-  //   if (distance < minDistance) {
-  //     controls.object.position.lerp(
-  //       controls.target
-  //         .clone()
-  //         .add(
-  //           controls.object.position
-  //             .clone()
-  //             .sub(controls.target)
-  //             .normalize()
-  //             .multiplyScalar(minDistance)
-  //         ),
-  //       SOFT_LIMITS.rubberBand
-  //     )
-  //   } else if (distance > maxDistance) {
-  //     controls.object.position.lerp(
-  //       controls.target
-  //         .clone()
-  //         .add(
-  //           controls.object.position
-  //             .clone()
-  //             .sub(controls.target)
-  //             .normalize()
-  //             .multiplyScalar(maxDistance)
-  //         ),
-  //       SOFT_LIMITS.rubberBand
-  //     )
-  //   }
+    const distance = controls.object.position.distanceTo(controls.target);
+    const minDistance = SOFT_LIMITS.minDistance;
+    const maxDistance = SOFT_LIMITS.maxDistance;
+    if (distance < minDistance) {
+      controls.object.position.lerp(
+        controls.target
+          .clone()
+          .add(
+            controls.object.position
+              .clone()
+              .sub(controls.target)
+              .normalize()
+              .multiplyScalar(minDistance)
+          ),
+        SOFT_LIMITS.rubberBand
+      );
+    } else if (distance > maxDistance) {
+      controls.object.position.lerp(
+        controls.target
+          .clone()
+          .add(
+            controls.object.position
+              .clone()
+              .sub(controls.target)
+              .normalize()
+              .multiplyScalar(maxDistance)
+          ),
+        SOFT_LIMITS.rubberBand
+      );
+    }
 
-  //   controls.update()
-  // })
+    controls.update();
+  });
 
   return (
     <>
