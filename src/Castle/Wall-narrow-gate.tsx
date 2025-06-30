@@ -17,12 +17,9 @@ type GLTFResult = GLTF & {
     colormap: THREE.MeshStandardMaterial;
   };
 };
-console.log(meshUrl, "meul");
 
 export function WallNarrowGate(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF(meshUrl) as unknown as GLTFResult;
-
-  console.log(nodes);
 
   return (
     <group {...props} dispose={null}>

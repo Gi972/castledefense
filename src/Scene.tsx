@@ -252,7 +252,6 @@ export default function Scene() {
             key={target.id}
             {...target}
             gameplay={() => {
-              console.log("GAMEOVER");
               setGameState(GAME_STATE.GAME_OVER);
             }}
           />

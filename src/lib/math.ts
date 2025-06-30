@@ -47,12 +47,6 @@ export function generateArcPositions(
     }
   }
 
-  if (attempts >= maxAttempts) {
-    console.warn(
-      `Could only place ${targets.length} targets after ${maxAttempts} attempts.`
-    );
-  }
-
   return targets;
 }
 
@@ -119,14 +113,6 @@ export function generateArcAnnulusPositionsWithDistance(
 
     if (ok || positions.length === 0) {
       positions.push({ position: candidate });
-    }
-
-    if (tries > maxTries) {
-      console.warn(
-        "Nombre de tentatives dépassé, résultat partiel:",
-        positions.length
-      );
-      break;
     }
   }
 
