@@ -8,6 +8,8 @@ import { type JSX } from "react";
 import { useGLTF } from "@react-three/drei";
 import type { GLTF } from "three-stdlib";
 
+import meshUrl from "/castle/GLB_format/wall-narrow.glb";
+
 type GLTFResult = GLTF & {
   nodes: {
     ["wall-narrow_1"]: THREE.Mesh;
@@ -18,9 +20,7 @@ type GLTFResult = GLTF & {
 };
 
 export function WallNarrow(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF(
-    "/public/castle/GLB_format/wall-narrow.glb"
-  ) as unknown as GLTFResult;
+  const { nodes, materials } = useGLTF(meshUrl) as unknown as GLTFResult;
 
   return (
     <group {...props} dispose={null}>
@@ -33,4 +33,4 @@ export function WallNarrow(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/public/castle/GLB_format/wall-narrow.glb");
+useGLTF.preload(meshUrl);

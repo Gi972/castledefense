@@ -7,6 +7,8 @@ import * as THREE from "three";
 import { type JSX } from "react";
 import { useGLTF } from "@react-three/drei";
 import type { GLTF } from "three-stdlib";
+import meshUrl from "/castle/GLB_format/gate.glb";
+
 type GLTFResult = GLTF & {
   nodes: {
     gate_1: THREE.Mesh;
@@ -17,9 +19,7 @@ type GLTFResult = GLTF & {
 };
 
 export function Gate(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF(
-    "/public/castle/GLB_format/gate.glb"
-  ) as unknown as GLTFResult;
+  const { nodes, materials } = useGLTF(meshUrl) as unknown as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -31,4 +31,4 @@ export function Gate(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/public/castle/GLB_format/gate.glb");
+useGLTF.preload(meshUrl);

@@ -7,6 +7,8 @@ import * as THREE from "three";
 import { type JSX } from "react";
 import { useGLTF } from "@react-three/drei";
 import type { GLTF } from "three-stdlib";
+import meshUrl from "/pirate/GLBformat/cannon.glb";
+
 type GLTFResult = GLTF & {
   nodes: {
     cannon_1: THREE.Mesh;
@@ -19,9 +21,7 @@ type GLTFResult = GLTF & {
 };
 
 export function Cannon(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF(
-    "/public/pirate/GLBformat/cannon.glb"
-  ) as unknown as GLTFResult;
+  const { nodes, materials } = useGLTF(meshUrl) as unknown as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -48,4 +48,4 @@ export function Cannon(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/public/pirate/GLBformat/cannon.glb");
+useGLTF.preload(meshUrl);

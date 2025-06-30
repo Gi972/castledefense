@@ -7,6 +7,7 @@ import * as THREE from "three";
 import { type JSX } from "react";
 import { useGLTF } from "@react-three/drei";
 import type { GLTF } from "three-stdlib";
+import meshUrl from "/castle/GLB_format/flag-banner-short.glb";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -18,9 +19,7 @@ type GLTFResult = GLTF & {
 };
 
 export function FlagBannerShort(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF(
-    "/public/castle/GLB_format/flag-banner-short.glb"
-  ) as unknown as GLTFResult;
+  const { nodes, materials } = useGLTF(meshUrl) as unknown as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -32,4 +31,4 @@ export function FlagBannerShort(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/public/castle/GLB_format/flag-banner-short.glb");
+useGLTF.preload(meshUrl);

@@ -229,12 +229,12 @@ export default function CameraMan() {
         ref={controlsRef}
         enableDamping={true}
         dampingFactor={0.05}
-        // minPolarAngle={SOFT_LIMITS.minPolar - SOFT_LIMITS.margin}
-        // maxPolarAngle={SOFT_LIMITS.maxPolar + SOFT_LIMITS.margin}
-        // minAzimuthAngle={SOFT_LIMITS.minAzimuth - SOFT_LIMITS.margin}
-        // maxAzimuthAngle={SOFT_LIMITS.maxAzimuth + SOFT_LIMITS.margin}
-        // minDistance={SOFT_LIMITS.minDistance}
-        // maxDistance={SOFT_LIMITS.maxDistance}
+        minPolarAngle={SOFT_LIMITS.minPolar - SOFT_LIMITS.margin}
+        maxPolarAngle={SOFT_LIMITS.maxPolar + SOFT_LIMITS.margin}
+        minAzimuthAngle={SOFT_LIMITS.minAzimuth - SOFT_LIMITS.margin}
+        maxAzimuthAngle={SOFT_LIMITS.maxAzimuth + SOFT_LIMITS.margin}
+        minDistance={SOFT_LIMITS.minDistance}
+        maxDistance={SOFT_LIMITS.maxDistance}
       />
     </>
   );

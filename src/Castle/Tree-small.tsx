@@ -7,6 +7,7 @@ import * as THREE from "three";
 import { type JSX } from "react";
 import { Instance, Instances, useGLTF } from "@react-three/drei";
 import { type GLTF } from "three-stdlib";
+import meshUrl from "/castle/GLB_format/tree-small.glb";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -18,9 +19,7 @@ type GLTFResult = GLTF & {
 };
 
 export function TreeSmall(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF(
-    "/public/castle/GLB_format/tree-small.glb"
-  ) as unknown as GLTFResult;
+  const { nodes, materials } = useGLTF(meshUrl) as unknown as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -41,9 +40,7 @@ export function MTrees({
   range: any;
   scale: number;
 }) {
-  const { nodes, materials } = useGLTF(
-    "/public/castle/GLB_format/tree-small.glb"
-  ) as unknown as GLTFResult;
+  const { nodes, materials } = useGLTF(meshUrl) as unknown as GLTFResult;
   return (
     <Instances
       scale={scale}
@@ -66,4 +63,4 @@ function ITree(props: any) {
   );
 }
 
-useGLTF.preload("/public/castle/GLB_format/tree-small.glb");
+useGLTF.preload(meshUrl);

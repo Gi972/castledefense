@@ -7,6 +7,9 @@ import * as THREE from "three";
 import { type JSX } from "react";
 import { useGLTF } from "@react-three/drei";
 import type { GLTF } from "three-stdlib";
+
+import meshUrl from "/pirate/GLBformat/patch-sand.glb";
+
 type GLTFResult = GLTF & {
   nodes: {
     ["patch-sand_1"]: THREE.Mesh;
@@ -17,9 +20,7 @@ type GLTFResult = GLTF & {
 };
 
 export function PatchSand(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF(
-    "/public/pirate/GLBformat/patch-sand.glb"
-  ) as unknown as GLTFResult;
+  const { nodes, materials } = useGLTF(meshUrl) as unknown as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -31,4 +32,4 @@ export function PatchSand(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/public/pirate/GLBformat/patch-sand.glb");
+useGLTF.preload(meshUrl);

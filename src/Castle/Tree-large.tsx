@@ -8,6 +8,8 @@ import { type JSX } from "react";
 import { useGLTF } from "@react-three/drei";
 import type { GLTF } from "three-stdlib";
 
+import meshUrl from "/castle/GLB_format/tree-large.glb";
+
 type GLTFResult = GLTF & {
   nodes: {
     ["tree-large_1"]: THREE.Mesh;
@@ -18,9 +20,7 @@ type GLTFResult = GLTF & {
 };
 
 export function TreeLarge(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF(
-    "/public/castle/GLB_format/tree-large.glb"
-  ) as unknown as GLTFResult;
+  const { nodes, materials } = useGLTF(meshUrl) as unknown as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -32,4 +32,4 @@ export function TreeLarge(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/public/castle/GLB_format/tree-large.glb");
+useGLTF.preload(meshUrl);
